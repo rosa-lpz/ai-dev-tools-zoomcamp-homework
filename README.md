@@ -1,5 +1,5 @@
 # AI Dev Tools Zoomcamp - Homework
-Homework for [AI dev tools Zoomcamp by DataTalksClub](https://github.com/rosa-lpz/ai-dev-tools-zoomcamp-2025/tree/main)
+Homework for [AI dev tools Zoomcamp](https://github.com/rosa-lpz/ai-dev-tools-zoomcamp-2025/tree/main) by [DataTalksClub](https://github.com/DataTalksClub)
 
 
 
