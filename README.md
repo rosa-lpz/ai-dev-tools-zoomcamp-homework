@@ -5,7 +5,7 @@ Homework for [AI dev tools Zoomcamp](https://github.com/rosa-lpz/ai-dev-tools-zo
 
 ## Content
 
-### Module 1 — [Introduction to Vibe Coding / AI Tools Overview](01-overview/)
+### Module 1 — [Introduction to Vibe Coding / AI Tools Overview](01_vibe_coding_ai_tools_overview) | [Answers](01_vibe_coding_ai_tools_overview/hw-01.md)
 
 * AI-assisted development with Snake game example (React + JS)
 * Chat applications: ChatGPT, Claude, DeepSeek, Microsoft Copilot
