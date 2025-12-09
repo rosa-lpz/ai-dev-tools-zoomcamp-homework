@@ -27,6 +27,10 @@ But you can experiment with alternatives, such as Streamlit.
 
 You don't need to know these technologies for doing this homework.
 
+# Application repository
+
+* https://github.com/rosa-lpz/django-react-coding-tests-platform
+
 
 ## Question 1: Initial Implementation
 
@@ -42,6 +46,32 @@ What's the initial prompt you gave to AI to start the implementation?
 
 Copy and paste it in the homework form.
 
+```
+Crate the frontend code using react+vite with javascript for a coding tests plataform
+
+Frontend:
+
+User authentication
+Dashboard
+- candidate dashboard
+- Coding enviroment
+- Code editor (e.g., Monaco Editor or Ace Editor) to write code in multiple languages.
+- Auto-save functionality (e.g., save code every 30 seconds).
+- Output display panel for runtime results or errors.
+- Timer to track the candidate’s time while solving problems.
+- Optional features: Syntax highlighting, error highlighting, input/output formatting.
+
+For the backend create templates django
+
+Backend:
+
+- "users" model
+- "codetests" models
+	- test
+	- testcase
+```
+
+
 
 ## Question 2: Integration Tests
 
@@ -55,6 +85,10 @@ Also it's a good idea to ask it to start creating a `README.md` file with all th
 
 What's the terminal command you use for executing tests?
 
+```
+ python manage.py test
+```
+
 
 
 ## Question 3: Running Both Client and Server
@@ -64,11 +98,98 @@ Now let's make it possible to run both client and server at the same time. Use `
 What's the command you have in `package.json` for `npm dev` for running both?
 
 
+
+### **Method 1: One-Command Startup (Easiest)** ⭐
+
+```bash
+./start-servers.sh
+```
+
+**Features:**
+
+- ✅ Starts both Django and React servers automatically
+- ✅ Colored output showing which server each log comes from
+- ✅ Nice formatted display with URLs and credentials
+- ✅ Single `Ctrl+C` stops both servers gracefully
+- ✅ Auto-creates logs directory
+
+### **Method 2: Using Makefile**
+
+```bash
+make dev          # Start both servers
+make run-backend  # Backend only
+make run-frontend # Frontend only
+make help         # See all commands
+```
+
+### **Method 3: Separate Terminals**
+
+**Terminal 1 (Backend):**
+
+```bash
+cd backend
+../codingtestsvenv/bin/python manage.py runserver
+```
+
+**Terminal 2 (Frontend):**
+
+```bash
+cd frontend
+npm run dev
+```
+
+### **Scripts Created:**
+
+1. **[start-servers.sh](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-browser/workbench/workbench.html)** - Beautiful startup script with formatted output
+2. **[start-dev.sh](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-browser/workbench/workbench.html)** - Simpler version that logs to files
+3. **[stop-servers.sh](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-browser/workbench/workbench.html)** - Stops both servers by killing processes on ports 8000 and 5173
+4. **[Makefile](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-browser/workbench/workbench.html)** - Convenient make commands for all operations
+5. **[RUNNING.md](vscode-file://vscode-app/usr/share/code/resources/app/out/vs/code/electron-browser/workbench/workbench.html)** - Complete guide with all methods including tmux and screen
+
+
+
 ## Question 4: Syntax Highlighting
 
 Let's now add support for syntax highlighting for JavaScript and Python.
 
 Which library did AI use for it?
+
+```javascript
+import Editor from '@monaco-editor/react';
+```
+
+
+
+```javascript
+
+<Editor
+  height="calc(100% - 200px)"
+  language={language}  // ← This prop tells Monaco which syntax to highlight
+  value={code}
+  onChange={(value) => setCode(value || '')}
+  theme="vs-dark"      // ← Dark theme with syntax colors
+  options={{
+    minimap: { enabled: false },
+    fontSize: 14,
+    lineNumbers: 'on',
+    scrollBeyondLastLine: false,
+    automaticLayout: true,
+    tabSize: 4,
+    readOnly: !isTestActive,
+  }}
+/>
+```
+
+**Key Features Provided by Monaco:**
+
+- ✅ Syntax highlighting (colors for keywords, strings, comments, etc.)
+- ✅ Auto-completion (IntelliSense)
+- ✅ Error detection
+- ✅ Bracket matching
+- ✅ Code folding
+- ✅ Multiple themes (vs-dark, vs-light, hc-black)
+- ✅ Multi-cursor editing
+- ✅ Find and replace
 
 
 
@@ -81,11 +202,13 @@ For security reasons, we don't want to execute code directly on the server. Inst
 Which library did AI use for compiling Python to WASM?
 
 
+
 ## Question 6: Containerization
 
 Now let's containerize our application. Ask AI to help you create a Dockerfile for the application. Put both backend and frontend in one container.
 
 What's the base image you used for your Dockerfile?
+
 
 
 ## Question 7: Deployment
@@ -95,6 +218,7 @@ Now let's deploy it. Choose a service to deploy your application.
 Which service did you use for deployment?
 
 
+
 ## Homework URL
 
 Commit your code to GitHub. You can create a repository for this course. Within the repository, create a folder, e.g. "02-coding-interview", where you put the code.
@@ -102,6 +226,7 @@ Commit your code to GitHub. You can create a repository for this course. Within 
 Use the link to this folder in the homework submission form.
 
 Don't forget to commit your code at every step. You can create an `AGENTS.md` file with the instructions for AI to help you with git commands.
+
 
 
 ## Tip
